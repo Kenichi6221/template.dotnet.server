@@ -8,18 +8,15 @@ namespace Bambu.Core.Repositories
 {
     public interface IRepository<TEntity> where TEntity : Entity
     {
-        Task Save(TEntity Item);
-        Task Add(TEntity Item);
-        Task SaveAll(IEnumerable<TEntity> Items);
-        Task AddAll(IEnumerable<TEntity> Items);
-        Task Delete(int PrimaryKey);
-        Task<TEntity> GetByIdAsync(int id);
-        Task<IEnumerable<TEntity>> GetAllAsync();
-        IEnumerable<TEntity> Find<T2>(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, T2>> order);
-        Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
-        Task AddAsync(TEntity entity);
-        Task AddRangeAsync(IEnumerable<TEntity> entities);
-        void Remove(TEntity entity);
-        void RemoveRange(IEnumerable<TEntity> entities);
+        Task<List<TEntity>> GetAllAsync();
+        Task<TEntity> GetByIDAsync(int Id);
+        Task<List<TEntity>> GetAsync<T2>(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, T2>> order);
+
+        Task SaveAsync(TEntity Item);
+        Task AddAsync(TEntity Item);
+        Task SaveAllAsync(IEnumerable<TEntity> Items);
+        Task AddAllAsync(IEnumerable<TEntity> Items);
+
+        Task DeleteAsync(int PrimaryKey);
     }
 }

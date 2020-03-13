@@ -1,74 +1,65 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Bambu.Core.Models;
 using Bambu.Core.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bambu.Data.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
     {
-        public Task Add(TEntity Item)
+        protected readonly DbContext _context;
+        public Repository(DbContext context)
         {
-            throw new System.NotImplementedException();
+            _context = context;
         }
 
-        public Task AddAll(System.Collections.Generic.IEnumerable<TEntity> Items)
+        public async Task AddAsync(TEntity Item)
         {
-            throw new System.NotImplementedException();
+            _context.Add(Item);
+            await _context.SaveChangesAsync();
         }
 
-        public Task AddAsync(TEntity entity)
+        public async Task AddAllAsync(IEnumerable<TEntity> Items)
         {
-            throw new System.NotImplementedException();
+            _context.AddRange(Items);
+            await _context.SaveChangesAsync();
         }
 
-        public Task AddRangeAsync(System.Collections.Generic.IEnumerable<TEntity> entities)
+        public async Task DeleteAsync(int id)
         {
-            throw new System.NotImplementedException();
+            _context.Remove(await GetByIDAsync(id));
+            await _context.SaveChangesAsync();
         }
 
-        public Task Delete(int PrimaryKey)
+        public async Task<List<TEntity>> GetAsync<T2>(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, T2>> order)
         {
-            throw new System.NotImplementedException();
+            return await _context.Set<TEntity>().AsNoTracking().Where(predicate).OrderBy(order).ToListAsync();
         }
 
-        public System.Collections.Generic.IEnumerable<TEntity> Find<T2>(System.Linq.Expressions.Expression<System.Func<TEntity, bool>> predicate, System.Linq.Expressions.Expression<System.Func<TEntity, T2>> order)
+        public async Task<List<TEntity>> GetAllAsync()
         {
-            throw new System.NotImplementedException();
+            return await _context.Set<TEntity>().AsNoTracking().ToListAsync();
         }
 
-        public Task<System.Collections.Generic.IEnumerable<TEntity>> GetAllAsync()
+        public async Task<TEntity> GetByIDAsync(int Id)
         {
-            throw new System.NotImplementedException();
+            return await _context.Set<TEntity>().FindAsync(Id);
         }
 
-        public Task<TEntity> GetByIdAsync(int id)
+        public async Task SaveAsync(TEntity Item)
         {
-            throw new System.NotImplementedException();
+            _context.Update(Item);
+            await _context.SaveChangesAsync();
         }
 
-        public void Remove(TEntity entity)
+        public async Task SaveAllAsync(IEnumerable<TEntity> Items)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void RemoveRange(System.Collections.Generic.IEnumerable<TEntity> entities)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task Save(TEntity Item)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task SaveAll(System.Collections.Generic.IEnumerable<TEntity> Items)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<TEntity> SingleOrDefaultAsync(System.Linq.Expressions.Expression<System.Func<TEntity, bool>> predicate)
-        {
-            throw new System.NotImplementedException();
+            _context.UpdateRange(Items);
+            await _context.SaveChangesAsync();
         }
     }
 }
