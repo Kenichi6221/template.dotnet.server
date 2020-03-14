@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Bambu.Core;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Bambu.Data
 {
@@ -6,12 +8,12 @@ namespace Bambu.Data
     {
         public static void ConfigureServices(IServiceCollection services, string connectionString)
         {
-            //Context lifetime defaults to "scoped"
-            // services
-            //      .AddDbContext<DbContext>(options => options.UseSqlServer(connectionString));
 
-            // services
-            //     .AddScoped<InterfazFromCore, ConcreteClassInDataProject>()
+            services
+                 .AddDbContext<BambuDbContext>(options => options.UseInMemoryDatabase("bambudb"));
+
+            services
+                .AddScoped<IUnitOfWork, UnitOfWork>();
         }
     }
 }
