@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Bambu.Core.Business;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Bambu.Business
 {
@@ -6,8 +7,8 @@ namespace Bambu.Business
     {
         public static void ConfigureServices(IServiceCollection services)
         {
-            // services
-            //     .AddTransient<InterfazFromCore, ConcreteClassInBusinessProject>()
+            services
+                .AddTransient<ISalesPersonService, SalesPersonService>();
         }
     }
 }

@@ -25,6 +25,8 @@ namespace Bambu.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            Bambu.Data.Configure.ConfigureServices(services, "DefaultConnection");
+            Bambu.Business.Configure.ConfigureServices(services);
             services.AddControllers();
         }
 
