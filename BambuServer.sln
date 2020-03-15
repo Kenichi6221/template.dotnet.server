@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bambu.Data", "Bambu.Data\Ba
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bambu.Business", "Bambu.Business\Bambu.Business.csproj", "{4E87824D-516C-4EAF-9827-306BC4FDDB9B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bambu.Data.Test", "Bambu.Data.Test\Bambu.Data.Test.csproj", "{4C9E2DF9-469E-4511-855F-91B88E9AE823}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,5 +74,17 @@ Global
 		{4E87824D-516C-4EAF-9827-306BC4FDDB9B}.Release|x64.Build.0 = Release|Any CPU
 		{4E87824D-516C-4EAF-9827-306BC4FDDB9B}.Release|x86.ActiveCfg = Release|Any CPU
 		{4E87824D-516C-4EAF-9827-306BC4FDDB9B}.Release|x86.Build.0 = Release|Any CPU
+		{4C9E2DF9-469E-4511-855F-91B88E9AE823}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C9E2DF9-469E-4511-855F-91B88E9AE823}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C9E2DF9-469E-4511-855F-91B88E9AE823}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4C9E2DF9-469E-4511-855F-91B88E9AE823}.Debug|x64.Build.0 = Debug|Any CPU
+		{4C9E2DF9-469E-4511-855F-91B88E9AE823}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4C9E2DF9-469E-4511-855F-91B88E9AE823}.Debug|x86.Build.0 = Debug|Any CPU
+		{4C9E2DF9-469E-4511-855F-91B88E9AE823}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C9E2DF9-469E-4511-855F-91B88E9AE823}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C9E2DF9-469E-4511-855F-91B88E9AE823}.Release|x64.ActiveCfg = Release|Any CPU
+		{4C9E2DF9-469E-4511-855F-91B88E9AE823}.Release|x64.Build.0 = Release|Any CPU
+		{4C9E2DF9-469E-4511-855F-91B88E9AE823}.Release|x86.ActiveCfg = Release|Any CPU
+		{4C9E2DF9-469E-4511-855F-91B88E9AE823}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
