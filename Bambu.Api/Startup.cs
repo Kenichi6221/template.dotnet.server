@@ -30,7 +30,6 @@ namespace Bambu.Api
             Bambu.Data.Configure.ConfigureServices(services, "DefaultConnection");
             Bambu.Business.Configure.ConfigureServices(services);
 
-
             services.AddApiVersioning(options =>
             {
                 options.DefaultApiVersion = new ApiVersion(1, 0);
@@ -40,13 +39,27 @@ namespace Bambu.Api
                 options.ApiVersionSelector = new CurrentImplementationApiVersionSelector(options);
             });
 
-            services.AddSwaggerGen(options =>
+            services.AddSwaggerGen(
+                options =>
+                {
+                    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Bambu Api", Version = "v1" });
+                });
+
+            services.AddMvc(
+                options =>
+                {
+                    options.CacheProfiles.Add("static", new CacheProfile { Duration = 86400 });
+                })
+            .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+            .AddJsonOptions(options =>
             {
-                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Bambu Api", Version = "v1" });
+                options.JsonSerializerOptions.IgnoreNullValues = true;
+                options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
             });
 
             services.AddControllers();
             services.AddRouting(options => options.LowercaseUrls = true);
+            services.AddResponseCaching();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
