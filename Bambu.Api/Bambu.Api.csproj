@@ -1,14 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <ItemGroup>
-    <ProjectReference Include="..\Bambu.Business\Bambu.Business.csproj" />
-    <ProjectReference Include="..\Bambu.Core\Bambu.Core.csproj" />
-    <ProjectReference Include="..\Bambu.Data\Bambu.Data.csproj" />
+    <ProjectReference Include="..\Bambu.Business\Bambu.Business.csproj"/>
+    <ProjectReference Include="..\Bambu.Core\Bambu.Core.csproj"/>
+    <ProjectReference Include="..\Bambu.Data\Bambu.Data.csproj"/>
   </ItemGroup>
-
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.1.0"/>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.1"/>
+  </ItemGroup>
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
-
-
 </Project>

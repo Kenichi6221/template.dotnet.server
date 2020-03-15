@@ -18,6 +18,7 @@ namespace Bambu.Api.Controllers
         }
 
         [HttpGet(Name = nameof(GetAllSalesPerson))]
+        [ProducesResponseType(200)]
         public async Task<ActionResult<List<Salesperson>>> GetAllSalesPerson()
         {
             var salesPeople = await _salesPersonService.GetAllSalesPerson();

@@ -13,7 +13,6 @@ namespace Bambu.Business
         {
             _unitOfWork = unitOfWork;
         }
-
         public async Task<List<Salesperson>> GetAllSalesPerson()
         {
             return await _unitOfWork.SalesPerson.GetAllAsync();
