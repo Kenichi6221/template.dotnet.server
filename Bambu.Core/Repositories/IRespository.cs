@@ -12,9 +12,9 @@ namespace Bambu.Core.Repositories
         Task<TEntity> GetByIDAsync(int Id);
         Task<List<TEntity>> GetAsync<T2>(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, T2>> order);
 
-        Task SaveAsync(TEntity Item);
+        void Update(TEntity Item);
         Task AddAsync(TEntity Item);
-        Task SaveAllAsync(IEnumerable<TEntity> Items);
+        void UpdateRange(IEnumerable<TEntity> Items);
         Task AddAllAsync(IEnumerable<TEntity> Items);
 
         Task DeleteAsync(int PrimaryKey);

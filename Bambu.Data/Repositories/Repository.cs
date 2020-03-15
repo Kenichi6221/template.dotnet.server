@@ -19,20 +19,17 @@ namespace Bambu.Data.Repositories
 
         public async Task AddAsync(TEntity Item)
         {
-            _context.Add(Item);
-            await _context.SaveChangesAsync();
+            await _context.AddAsync(Item);
         }
 
         public async Task AddAllAsync(IEnumerable<TEntity> Items)
         {
-            _context.AddRange(Items);
-            await _context.SaveChangesAsync();
+            await _context.AddRangeAsync(Items);
         }
 
         public async Task DeleteAsync(int id)
         {
             _context.Remove(await GetByIDAsync(id));
-            await _context.SaveChangesAsync();
         }
 
         public async Task<List<TEntity>> GetAsync<T2>(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, T2>> order)
@@ -50,16 +47,14 @@ namespace Bambu.Data.Repositories
             return await _context.Set<TEntity>().FindAsync(Id);
         }
 
-        public async Task SaveAsync(TEntity Item)
+        public void Update(TEntity Item)
         {
             _context.Update(Item);
-            await _context.SaveChangesAsync();
         }
 
-        public async Task SaveAllAsync(IEnumerable<TEntity> Items)
+        public void UpdateRange(IEnumerable<TEntity> Items)
         {
             _context.UpdateRange(Items);
-            await _context.SaveChangesAsync();
         }
     }
 }
