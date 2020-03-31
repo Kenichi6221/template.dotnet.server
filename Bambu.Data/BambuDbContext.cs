@@ -5,7 +5,8 @@ namespace Bambu.Data
 {
     public class BambuDbContext : DbContext
     {
-        public BambuDbContext(DbContextOptions<BambuDbContext> options) : base(options)
+        public BambuDbContext(DbContextOptions<BambuDbContext> options) :
+        base(options)
         {
 
         }
