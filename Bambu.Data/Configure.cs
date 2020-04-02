@@ -16,8 +16,8 @@ namespace Bambu.Data
 
             services
                  .AddDbContext<BambuDbContext>(
-                     options => options.UseSqlServer(connectionString)
-
+                     options => options
+                     .UseSqlServer(connectionString)
                  );
 
             services
