@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Bambu.Core.Models;
 using Microsoft.Extensions.DependencyInjection;
+using System.Linq;
 
 namespace Bambu.Data
 {
@@ -14,6 +15,11 @@ namespace Bambu.Data
 
         private static async Task AddSalespersons(BambuDbContext context)
         {
+            if (context.Salesperson.Any())
+            {
+                return;
+            }
+
             await context.Salesperson.AddAsync(new Salesperson
             {
                 Email = "jhon.doe@email.com",
